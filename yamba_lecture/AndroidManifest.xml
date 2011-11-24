@@ -13,17 +13,21 @@
         android:label="@string/app_name"
         android:name=".YambaApplication" >
         <activity
-            android:label="@string/app_name"
+            android:label="@string/titleStatus"
             android:name=".StatusActivity" >
+        </activity>
+        <activity
+            android:label="@string/titlePrefs"
+            android:name=".PrefsActivity" >
+        </activity>
+        <activity
+            android:label="@string/titleTimeline"
+            android:name=".TimelineActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:label="@string/titlePrefs"
-            android:name=".PrefsActivity" >
         </activity>
 
         <service android:name=".UpdaterService" />

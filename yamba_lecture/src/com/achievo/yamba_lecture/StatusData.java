@@ -103,4 +103,13 @@ public class StatusData {
 			db.close();
 		}
 	}
+
+	public void delete() {
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		db.delete(TABLE, null, null);
+
+		db.close();
+	}
+
 }

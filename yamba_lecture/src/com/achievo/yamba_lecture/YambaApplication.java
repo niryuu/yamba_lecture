@@ -67,6 +67,10 @@ public class YambaApplication extends Application implements
 		return statusData;
 	}
 
+	public SharedPreferences getPrefs() {
+		return prefs;
+	}
+
 	public synchronized int fetchStatusUpdates() {
 		Log.d(TAG, "Fetching status updates");
 		Twitter twitter = this.getTwitter();

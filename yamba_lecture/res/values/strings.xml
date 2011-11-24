@@ -13,8 +13,15 @@
     <string name="titleUsername">Username</string>
     <string name="titlePassword">Password</string>
     <string name="titleApiRoot">API Root</string>
+    <string name="titlePurge">Purge Data</string>
     <string name="summaryUsername">Please enter your username</string>
     <string name="summaryPassword">Please enter your password</string>
     <string name="summaryApiRoot">URL of Root API for your service</string>
+    <string name="msgStatusUpdatedSuccessfully">Status Updated Successfully</string>
+    <string name="msgStatusUpdateFailed">Status Update Failed</string>
+    <string name="msgPleaseWaitWhilePosting">Please wait while posting...</string>
+    <string name="msgAllDataPurged">All data has been purged</string>
+    <string name="msgSetupPrefs">Please enter your username, password and server to
+    use</string>
 
 </resources>
