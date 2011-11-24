@@ -3,12 +3,12 @@ package com.achievo.yamba_lecture;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-public class PrefsActivity extends PreferenceActivity { // <1>
+public class PrefsActivity extends PreferenceActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) { // <2>
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.prefs); // <3>
+		addPreferencesFromResource(R.xml.prefs);
 	}
 
 }

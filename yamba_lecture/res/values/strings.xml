@@ -7,6 +7,9 @@
     <string name="hintText">Please enter your 140-character status</string>
     <string name="buttonUpdate">Update</string>
     <string name="titlePrefs">Prefs</string>
+    <string name="titleTimeline">Timeline</string>
+    <string name="titleServiceStop">Stop Service</string>
+    <string name="titleServiceStart">Start Service</string>
     <string name="titleUsername">Username</string>
     <string name="titlePassword">Password</string>
     <string name="titleApiRoot">API Root</string>

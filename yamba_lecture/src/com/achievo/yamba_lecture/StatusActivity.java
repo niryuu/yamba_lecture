@@ -51,11 +51,9 @@ public class StatusActivity extends Activity implements OnClickListener,
 	}
 
 	public void onClick(View v) {
-		try {
-			getTwitter().setStatus(editText.getText().toString());
-		} catch (TwitterException e) {
-			Log.d(TAG, "Twitter setStatus failed: " + e);
-		}
+		String status = editText.getText().toString();
+		new PostToTwitter().execute(status);
+		Log.d(TAG, "onClicked");
 	}
 
 	@Override
@@ -68,25 +66,30 @@ public class StatusActivity extends Activity implements OnClickListener,
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case R.id.itemServiceStart:
+			startService(new Intent(this, UpdaterService.class));
+			break;
+		case R.id.itemServiceStop:
+			stopService(new Intent(this, UpdaterService.class));
+			break;
 		case R.id.itemPrefs:
 			startActivity(new Intent(this, PrefsActivity.class));
 			break;
 		}
-
-		return true; // <3>
+		return true;
 	}
 
 	class PostToTwitter extends AsyncTask<String, Integer, String> {
 		@Override
 		protected String doInBackground(String... statuses) {
 			try {
-				winterwell.jtwitter.Status status = twitter
+				YambaApplication yamba = ((YambaApplication) getApplication());
+				winterwell.jtwitter.Status status = yamba.getTwitter()
 						.updateStatus(statuses[0]);
 				return status.text;
-			} catch (TwitterException e) {
-				Log.e(TAG, e.toString());
-				e.printStackTrace();
-				return "Failed to post";
+			} catch (Exception e) {
+				Log.e(TAG, "Failed to connect to twitter service", e);
+				return "Failed to post - check Preferences";
 			}
 		}
 
@@ -128,7 +131,6 @@ public class StatusActivity extends Activity implements OnClickListener,
 			apiRoot = prefs.getString("apiRoot",
 					"http://yamba.marakana.com/api");
 
-			// Connect to twitter service
 			twitter = new Twitter(username, password);
 			twitter.setAPIRootUrl(apiRoot);
 		}
