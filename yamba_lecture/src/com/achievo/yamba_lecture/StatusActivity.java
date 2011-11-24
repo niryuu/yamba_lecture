@@ -123,20 +123,6 @@ public class StatusActivity extends Activity implements OnClickListener,
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 	}
 
-	private Twitter getTwitter() {
-		if (twitter == null) {
-			String username, password, apiRoot;
-			username = prefs.getString("username", "");
-			password = prefs.getString("password", "");
-			apiRoot = prefs.getString("apiRoot",
-					"http://yamba.marakana.com/api");
-
-			twitter = new Twitter(username, password);
-			twitter.setAPIRootUrl(apiRoot);
-		}
-		return twitter;
-	}
-
 	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
 		twitter = null;
 	}
