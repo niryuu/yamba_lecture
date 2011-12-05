@@ -1,9 +1,13 @@
 package com.achievo.yamba_lecture;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -15,6 +19,8 @@ public class TimelineActivity extends BaseActivity {
 	Cursor cursor;
 	ListView listTimeline;
 	SimpleCursorAdapter adapter;
+	TimelineReceiver receiver;
+	IntentFilter filter;
 	static final String[] FROM = { DbHelper.C_CREATED_AT, DbHelper.C_USER,
 			DbHelper.C_TEXT };
 	static final int[] TO = { R.id.textCreatedAt, R.id.textUser, R.id.textText };
@@ -31,6 +37,8 @@ public class TimelineActivity extends BaseActivity {
 		}
 
 		listTimeline = (ListView) findViewById(R.id.listTimeline);
+		receiver = new TimelineReceiver();
+		filter = new IntentFilter("com.marakana.yamba.NEW_STATUS");
 	}
 
 	@Override
@@ -38,6 +46,14 @@ public class TimelineActivity extends BaseActivity {
 		super.onResume();
 
 		this.setupList();
+		registerReceiver(receiver, filter);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+
+		unregisterReceiver(receiver);
 	}
 
 	@Override
@@ -71,4 +87,13 @@ public class TimelineActivity extends BaseActivity {
 		}
 
 	};
+
+	class TimelineReceiver extends BroadcastReceiver { //
+		@Override
+		public void onReceive(Context context, Intent intent) { //
+			cursor.requery(); //
+			adapter.notifyDataSetChanged(); //
+			Log.d("TimelineReceiver", "onReceived");
+		}
+	}
 }

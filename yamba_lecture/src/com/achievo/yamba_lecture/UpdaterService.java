@@ -12,6 +12,7 @@ public class UpdaterService extends Service {
 	static final int DELAY = 60000;
 	private boolean runFlag = false;
 	private Updater updater;
+	Intent intent;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -68,6 +69,9 @@ public class UpdaterService extends Service {
 					int newUpdates = yamba.fetchStatusUpdates();
 					if (newUpdates > 0) {
 						Log.d(TAG, "We have a new status");
+						intent = new Intent(NEW_STATUS_INTENT); //
+						intent.putExtra(NEW_STATUS_EXTRA_COUNT, newUpdates); //
+						updaterService.sendBroadcast(intent); //
 					}
 					Thread.sleep(DELAY);
 				} catch (InterruptedException e) {
