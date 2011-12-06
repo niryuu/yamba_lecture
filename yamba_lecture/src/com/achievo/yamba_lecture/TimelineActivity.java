@@ -24,6 +24,7 @@ public class TimelineActivity extends BaseActivity {
 	static final String[] FROM = { DbHelper.C_CREATED_AT, DbHelper.C_USER,
 			DbHelper.C_TEXT };
 	static final int[] TO = { R.id.textCreatedAt, R.id.textUser, R.id.textText };
+	static final String SEND_TIMELINE_NOTIFICATIONS = "com.achievo.yamba_lecture.SEND_TIMELINE_NOTIFICATIONS";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,8 @@ public class TimelineActivity extends BaseActivity {
 		super.onResume();
 
 		this.setupList();
-		registerReceiver(receiver, filter);
+		super.registerReceiver(receiver, filter, SEND_TIMELINE_NOTIFICATIONS,
+				null);
 	}
 
 	@Override
