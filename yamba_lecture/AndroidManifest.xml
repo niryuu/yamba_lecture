@@ -22,8 +22,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.marakana.yamba.SEND_TIMELINE_NOTIFICATIONS" />
-    <uses-permission android:name="com.marakana.yamba.RECEIVE_TIMELINE_NOTIFICATIONS" />
+    <uses-permission android:name="com.achievo.yamba_lecture.SEND_TIMELINE_NOTIFICATIONS" />
+    <uses-permission android:name="com.achievo.yamba_lecture.RECEIVE_TIMELINE_NOTIFICATIONS" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -64,7 +64,7 @@
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <intent-filter >
-                <action android:name="com.marakana.yamba.NEW_STATUS" />
+                <action android:name="com.achievo.yamba_lecture.NEW_STATUS" />
             </intent-filter>
 
             <meta-data
@@ -75,7 +75,7 @@
         <service android:name=".UpdaterService" />
 
         <provider
-            android:authorities="com.achievo.yamba_lecture"
+            android:authorities="com.achievo.yamba_lecture.statusprovider"
             android:name=".StatusProvider" />
     </application>
 
