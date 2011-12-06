@@ -23,6 +23,7 @@
     <string name="msgAllDataPurged">All data has been purged</string>
     <string name="msgSetupPrefs">Please enter your username, password and server to
     use</string>
+    <string name="msgLastTimelineUpdate">Yamba Widget</string>
     <string name="send_timeline_notifications_permission_description">Send Timeline Notifications</string>
     <string name="send_timeline_notifications_permission_label">Allow this application to send timeline notification to other applications</string>
     <string name="receive_timeline_notifications_permission_description">Receive Timeline Notifications</string>

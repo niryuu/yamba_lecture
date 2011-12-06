@@ -57,7 +57,26 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:label="@string/msgLastTimelineUpdate"
+            android:name=".YambaWidget" >
+            <intent-filter >
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter >
+                <action android:name="com.marakana.yamba.NEW_STATUS" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/yamba_widget_info" />
+        </receiver>
 
         <service android:name=".UpdaterService" />
+
+        <provider
+            android:authorities="com.achievo.yamba_lecture"
+            android:name=".StatusProvider" />
     </application>
-</manifest>
+
+</manifest>
